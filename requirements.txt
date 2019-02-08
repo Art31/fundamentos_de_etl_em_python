@@ -1,0 +1,6 @@
+requests
+spyder
+pandas
+sqlalchemy
+tqdm
+cryptography
