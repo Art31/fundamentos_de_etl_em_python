@@ -46,14 +46,12 @@ price
 from ods.ad b
 join ods.dm_area c on b.area_id_fk=c.area_id_pk
 join ods.dm_reason_removed_detail d on b.reason_removed_detail_id_fk=d.reason_removed_detail_id_pk
-where {DATE_CLAUSE}
-limit 300000"""
+where {DATE_CLAUSE}"""
 
 # ---- Define these variables ---- #
 etl_context = 'assignment'
 schema_to_load = 'etl_class'
 table_in_schema_to_load = 'assignment'
-prefixo_email_olx = '' # ex: arthur.telles
 # -------------------------------- #
 
 
@@ -77,11 +75,9 @@ for date in list(dates_to_load):
     
     
     # ----- manipulação de dados ocorre aqui ----- #
-
     
     # -------------------------------------------- #
     
-    result = ''
     
     if result.shape[0] > 100:
         postgres_executor.insert_chunks_with_progress(result, table_in_schema_to_load, schema_to_load,\
